@@ -101,7 +101,7 @@
       /*修改*/
       updata(id){
         this.$router.push({
-          path:'/elegantupdate',
+          path:'/teamele/elegantupdate',
           query:{id:id}
         })
         store.set('elegantupdate',id)
