@@ -12,76 +12,15 @@
           <router-link to="/home"> <h3 class="tit" v-show="!isCollapse">海创团队</h3></router-link>
           <router-link to="/home"> <h3 class="tit" v-show="isCollapse">HC</h3></router-link>
           <p class="tit-divi">Main</p>
-          <el-submenu index="1">
+          <el-submenu :index="index.toString()" v-for="(route,index) in routes" :key="route.path">
             <template slot="title">
               <i class="el-icon-s-home"></i>
-              <span slot="title">团队信息</span>
+              <span slot="title">{{route.meta.title}}</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/message/resource">实验室资源</el-menu-item>
-              <el-menu-item index="/message/regulation">管理制度</el-menu-item>
+              <el-menu-item :index="child.path" :key="child.path" v-for="child in route.children">{{child.meta.title}}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-video-camera-solid"></i>
-              <span slot="title">团队视频</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index='/video/videoupdate'>所有视频</el-menu-item>
-              <el-menu-item index=/video/videoupload'>视频上传</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="5">
-            <template slot="title">
-              <i class="el-icon-picture"></i>
-              <span slot="title">团队风采</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index='/teamele/all'>所有风采</el-menu-item>
-              <el-menu-item index='/teamele/upload'>风采上传</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-menu-item index='/teamsurroundingl/detail'>
-            <i class="el-icon-s-promotion"></i>
-            <span slot="title">团队氛围</span>
-          </el-menu-item>
-          <el-menu-item index="/teamprojects" >
-            <i class="el-icon-s-order"></i>
-            <span slot="title">团队项目</span>
-          </el-menu-item>
-          <el-submenu index="4" >
-            <template slot="title">
-              <i class="el-icon-user-solid"></i>
-              <span slot="title">团队成员</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index='/teammembers/all'>成员信息</el-menu-item>
-              <el-menu-item index='/teammembers/upload'>成员上传</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-menu-item index='/groups/all'>
-            <i class="el-icon-s-order"></i>
-            <span slot="title">团队组别</span>
-          </el-menu-item>
-          <el-submenu index="6" >
-            <template slot="title">
-              <i class="el-icon-star-on"></i>
-              <span slot="title">团队奖项</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index='/honor/all'>所有奖项</el-menu-item>
-              <el-menu-item index='/honor/upload?id=0'>上传奖项</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-menu-item index='/email/all'>
-            <i class="el-icon-message-solid"></i>
-            <span slot="title">网站消息</span>
-          </el-menu-item>
-          <el-menu-item index='/garbage/all'>
-            <i class="el-icon-delete-solid"></i>
-            <span slot="title">回收站</span>
-          </el-menu-item>
         </el-menu>
         <el-container class="content-right">
           <el-header style=" text-align: right" class="content-header">
@@ -109,14 +48,20 @@
 </template>
 
 <script>
+import router from '@/router/index'
+import { mapState , mapActions }  from 'vuex'
 export default {
   data() {
     return {
-      isCollapse: false
+      isCollapse: false,
+      routes:[]
     };
   },
-  methods: {
-
+  computed:{
+  },
+  mounted(){
+    this.$store.dispatch('sliderRoutes');
+    this.routes = this.$store.state.sliderRoutes.routes
   }
 }
 </script>

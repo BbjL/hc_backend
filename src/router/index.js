@@ -8,11 +8,13 @@ const router  = [
   {
     path: '/',
     redirect: '/login',//设置默认指向的路径
+    meta:{noShow:true}
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('../pages/Login/Login')
+    component: () => import('../pages/Login/Login'),
+    meta:{noShow:true}
   },
   // 团队信息
   {
@@ -84,10 +86,10 @@ const router  = [
   },
   // 团队氛围
   {
-    path: '/teamsurroundingl',
+    path: '/teamsurrounding',
     name: 'teamsurrounding',
-    redirect:'/teamsurroundingl/detail',
-    meta:{ icon: 'documentation' ,affix:true  },
+    redirect:'/teamsurrounding/detail',
+    meta:{title:'团队氛围', icon: 'documentation' ,affix:true  },
     component: Layout,
     children:[
       {
@@ -99,16 +101,21 @@ const router  = [
   },
   // 团队项目
   {
-    path: '/teamsurroundingl',
-    name: 'teamsurrounding',
-    redirect:'/teamsurroundingl/detail',
-    meta:{ icon: 'documentation' ,affix:true  },
+    path: '/projects',
+    name: 'projects',
+    redirect:'/projects/all',
+    meta:{title:'团队项目', icon: 'documentation' ,affix:true  },
     component: Layout,
     children:[
       {
-        path:'/teamsurroundingl/detail',
-        component:() => import('../pages/TeamSurrounding/TeamSurrounding' ),
-        meta:{title :'团队氛围 '}
+        path:'/projects/all',
+        component:() => import('../pages/TeamProjects/TeamProjects' ),
+        meta:{title :'所有项目 '}
+      },
+      {
+        path:'/projects/upload',
+        component:() => import('../pages/UploadProjects/UploadProjects' ),
+        meta:{title :'项目上传 '}
       }
     ]
   },
@@ -201,7 +208,7 @@ const router  = [
         meta:{title :'回收站 '}
       }
     ]
-  },
+  }
 ]
 
 export default new Router({
