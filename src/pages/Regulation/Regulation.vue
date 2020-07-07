@@ -1,6 +1,5 @@
 <template>
     <div>
-      <Bread locational1="团队信息" locational2="规章制度"/>
       <div class="tab-wrapper">
 　        <el-tabs v-model="reguTab" @tab-click="handleClick">
             <el-tab-pane label="所有规章" name="first">

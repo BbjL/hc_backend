@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Bread locational1="所有风采" path1="elegants" locational2="修改内容"/>
     <div class="elegantlists">
       <div class="title">
         <span style="width: 15%"><span style="padding-left: 10px">时间</span></span>

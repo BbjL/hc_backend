@@ -1,7 +1,5 @@
 <template>
     <div >
-      <Bread v-if="$route.params.id*1 === 0" locational1="团队成员" locational2="成员上传" />
-      <Bread v-else locational1="团队成员" locational2="成员信息" locational3="信息修改" path2="/teammembers"/>
       <div class="loading" v-loading="loading" v-if="loading"></div>
       <el-form class="uplaod-mems" ref="form" :model="form" label-width="80px" :rules="rules">
         <el-form-item label="成员姓名" prop="name">

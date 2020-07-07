@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api':{
-        target:'http://47.112.132.177:8084', //目标接口
+        target:'http://47.97.170.173:8084', //目标接口
         changeOrigin:true, //是否支持跨域
         pathRewrite:{ //重写匹配所有/api开头的接口
           '^/api': ''
@@ -28,7 +28,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

@@ -1,6 +1,5 @@
 <template>
     <div class="resource-page">
-      <Bread locational1="团队信息" locational2="实验室资源"/>
       <router-link :to="{path:'/addresource' , query:{id:0}}" >
         <el-button class="submit-team" type="primary" icon="el-icon-plus">添加资源</el-button>
       </router-link>

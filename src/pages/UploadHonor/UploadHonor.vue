@@ -1,7 +1,5 @@
 <template>
     <div class="upload-update-honor">
-      <Bread v-if="$route.query.id*1 === 0" locational1="团队奖项" path1="/uploadhonor?id=0"  locational2="上传奖项" path2="uploadhonor?id=0"/>
-      <Bread v-else locational1="团队奖项" path1="" locational2="奖项信息" locational3="信息修改" path2="/teamhonor"/>
       <div class="loading" v-loading="loading" v-if="loading"></div>
       <el-form class="upload-award" ref="form" :model="form" label-width="80px" :rules="rules">
         <el-form-item label="奖项名称" prop="awardName">

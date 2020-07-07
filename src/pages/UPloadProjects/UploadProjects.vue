@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Bread locational1="团队项目" :locational2="id?'修改内容':'上传项目'" path1="/teamprojects"/>
     <div class="loading" v-loading="loading" v-if="loading"></div>
     <div class="upload-box" >
       <el-form  :model="ruleForm" :rules="rules" ref="ruleForm" label-width="110px" class="demo-ruleForm" @submit.native.prevent>

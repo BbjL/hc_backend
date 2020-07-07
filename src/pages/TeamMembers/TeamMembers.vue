@@ -1,6 +1,5 @@
 <template>
     <div>
-      <Bread locational1="团队成员" locational2="成员信息"/>
       <div class="tab-wrapper">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="所有成员" name="first">

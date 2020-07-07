@@ -16,12 +16,33 @@ const router  = [
     component: () => import('../pages/Login/Login'),
     meta:{noShow:true}
   },
+  {
+    path: '/404',
+    name: 'error',
+    component: () => import('../pages/404/index'),
+    meta:{noShow:true}
+  },
+  // home
+  {
+    path: '/home',
+    name: 'home',
+    component: Layout,
+    redirect:'/home/all',
+    meta:{ noShow:true },
+    children:[
+      {
+        path:'/home/all',
+        component:() => import('../pages/Home/Home'),
+        meta:{}
+      }
+    ]
+  },
   // 团队信息
   {
     path: '/message',
     name: 'message',
     component: Layout,
-    meta:{ title:"团队信息", icon: 'documentation' ,affix:true  },
+    meta:{ title:"团队信息", icon: 'el-icon-s-home' ,affix:true  },
     children:[
       {
         path:'/message/resource',
@@ -40,7 +61,7 @@ const router  = [
     path: '/video',
     name: 'video',
     component: Layout,
-    meta:{ title:"团队视频", icon: 'documentation' ,affix:true  },
+    meta:{ title:"团队视频", icon: 'el-icon-video-camera-solid' ,affix:true  },
     children:[
       {
         path:'/video/all',
@@ -65,7 +86,7 @@ const router  = [
     name: 'teamele',
     component: Layout,
     redirect:'/teamele',
-    meta:{ title:"团队风采", icon: 'documentation' ,affix:true  },
+    meta:{ title:"团队风采", icon: 'el-icon-picture' ,affix:true  },
     children:[
       {
         path:'/teamele/all',
@@ -89,7 +110,7 @@ const router  = [
     path: '/teamsurrounding',
     name: 'teamsurrounding',
     redirect:'/teamsurrounding/detail',
-    meta:{title:'团队氛围', icon: 'documentation' ,affix:true  },
+    meta:{title:'团队氛围', icon: 'el-icon-s-promotion' ,affix:true  },
     component: Layout,
     children:[
       {
@@ -104,7 +125,7 @@ const router  = [
     path: '/projects',
     name: 'projects',
     redirect:'/projects/all',
-    meta:{title:'团队项目', icon: 'documentation' ,affix:true  },
+    meta:{title:'团队项目', icon: 'el-icon-s-order' ,affix:true  },
     component: Layout,
     children:[
       {
@@ -124,7 +145,7 @@ const router  = [
     path: '/teammembers',
     name: 'teammembers',
     redirect:'/teammembers/all',
-    meta:{title:'团队成员', icon: 'documentation' ,affix:true  },
+    meta:{title:'团队成员', icon: 'el-icon-user-solid' ,affix:true  },
     component: Layout,
     children:[
       {
@@ -144,7 +165,7 @@ const router  = [
     path: '/groups',
     name: 'groups',
     redirect:'/groups/all',
-    meta:{title:'团队组别', icon: 'documentation' ,affix:true  },
+    meta:{title:'团队组别', icon: 'el-icon-s-order' ,affix:true  },
     component: Layout,
     children:[
       {
@@ -164,7 +185,7 @@ const router  = [
     path: '/honor',
     name: 'honor',
     redirect:'/honor/all',
-    meta:{title:'团队奖项', icon: 'documentation' ,affix:true  },
+    meta:{title:'团队奖项', icon: 'el-icon-s-order' ,affix:true  },
     component: Layout,
     children:[
       {
@@ -184,13 +205,13 @@ const router  = [
     path: '/email',
     name: 'email',
     redirect:'/email/all',
-    meta:{title:'网站消息', icon: 'documentation' ,affix:true  },
+    meta:{title:'网站消息', icon: 'el-icon-message-solid' ,affix:true  },
     component: Layout,
     children:[
       {
         path:'/email/all',
         component:() => import('../pages/Email/Email' ),
-        meta:{title :'所有消息 '}
+        meta:{}
       }
     ]
   },
@@ -199,15 +220,20 @@ const router  = [
     path: '/garbage',
     name: 'garbage',
     redirect:'/garbage/all',
-    meta:{title:'回收站', icon: 'documentation' ,affix:true  },
+    meta:{title:'回收站', icon: 'el-icon-delete-solid' ,affix:true  },
     component: Layout,
     children:[
       {
         path:'/garbage/all',
         component:() => import('../pages/Garbage/Garbage'),
-        meta:{title :'回收站 '}
+        meta:{}
       }
     ]
+  },
+  {
+    path:'*',
+    redirect:'/404',
+    meta:{noShow:true}
   }
 ]
 

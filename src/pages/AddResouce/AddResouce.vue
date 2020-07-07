@@ -1,7 +1,5 @@
 <template>
     <div>
-      <Bread v-if="$route.query.id*1 === 0" locational1="团队信息" locational2="实验室资源" path2="/resource" locational3="添加资源"/>
-      <Bread v-else locational1="团队信息" locational2="实验室资源" path2="/resource" locational3="修改内容"/>
       <el-form class="tab-wrapper" ref="resourceForm" :rules="rules" label-width="100px" :model="resourceForm" label-position="top">
         <el-form-item label="设备名称"  prop="name">
           <el-input v-model="resourceForm.name"  placeholder="输入名称"></el-input>
@@ -37,10 +35,8 @@
 
 <script>
   import {reqAllReso,uploadReso,updateReso} from "../../api";
-  import Bread from '../../components/Bread/Bread'
     export default {
         name: "AddResource",
-        components:{Bread},
         data(){
           return {
             formData:new FormData(),          //待发送数据

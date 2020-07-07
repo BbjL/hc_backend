@@ -34,9 +34,12 @@
         },
         mounted() {
           this.init()
+          this.getLoginCookies();
         },
         methods:{
-          //初始化
+          /**
+           * 初始化
+           */
           init(){
             $('#login-button').click(function(){
               $('#login-button').fadeOut("slow",function(){
@@ -53,13 +56,20 @@
                 $("#login-button").fadeIn(800);
               });
             });
+
+
           },
-          //登陆
+
+          /**
+           * 登陆
+           * */
           async login(){
             const _account = this.account;
             const _pwd = this.pwd;
             if(_account&&_pwd != ''){
+
               const result = await reqLogin(_account,_pwd)
+
               if(result.status == 200){
                 this.$router.push({
                   path: '/home',
@@ -68,8 +78,19 @@
               }else{
                 this.$message({type:'warning' , message:'账号或密码错误！'})
               }
+
+
             }
+          },
+
+          /**
+           * 获取登陆cookie
+           * */
+          getLoginCookies(){
+            const cookies = document.cookie;
+            console.log(cookies)
           }
+
         }
     }
 </script>

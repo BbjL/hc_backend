@@ -1,0 +1,31 @@
+<template>
+
+    <el-submenu v-if="route.children.length > 1" :index="index" >
+      <template  slot="title" >
+        <i :class="route.meta.icon"></i>
+        <span slot="title">{{route.meta.title}}</span>
+      </template>
+      <el-menu-item-group>
+        <meauItem :childRoutes="child" v-for="child in route.children" :key="child.path"/>
+      </el-menu-item-group>
+    </el-submenu>
+
+    <el-menu-item v-else :index="route.children[0].path">
+        <i :class="route.meta.icon"></i>
+        <span slot="title">{{route.meta&&route.meta.title === ''?route.children[0].meta.title:route.meta.title}}</span>
+    </el-menu-item>
+
+</template>
+
+<script>
+import meauItem from './meauItem'
+export default {
+    name: "sliderItem",
+    components:{meauItem},
+    props:['route' , 'index'],
+}
+</script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+
+</style>

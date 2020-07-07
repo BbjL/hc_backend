@@ -29,7 +29,9 @@ export default({
  *  过滤掉不显示的路由
  * */
 export const filterAsyncRoutes = function(routes){
+
   let res = []
+
   routes.forEach( (route,index) => {
     if(!(route.meta&&route.meta.noShow&&route.meta.noShow === true)){
       if(route.children){
@@ -38,5 +40,6 @@ export const filterAsyncRoutes = function(routes){
       res.push(route)
     }
   })
+
   return res
 }

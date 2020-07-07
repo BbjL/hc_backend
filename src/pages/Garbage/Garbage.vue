@@ -1,6 +1,5 @@
 <template>
     <div>
-      <Bread locational1="回收站 "/>
       <div class="garbage-content">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="团队资源" name="first" ><teamSource v-if="activeName=='first'"/></el-tab-pane>

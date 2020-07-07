@@ -1,6 +1,5 @@
 <template>
     <div class="teams-info">
-      <Bread locational1="团队组别"/>
       <router-link :to="{path:'/addteam' , query:{id:0}}" >
         <el-button class="submit-team" type="primary" icon="el-icon-plus">添加组别</el-button>
       </router-link>

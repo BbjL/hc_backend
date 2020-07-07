@@ -1,6 +1,5 @@
 <template>
     <div class="team-honor">
-      <Bread locational1="团队奖项" path1="" locational2="奖项信息" />
       <div class="honor-message">
         <el-radio  v-model="radio" @change="findAward()" label="全部" >全部</el-radio>
         <el-radio v-model="radio" @change="findAward(group.id)" :label="group.id" v-for="(group,index) in groups" :key="index">

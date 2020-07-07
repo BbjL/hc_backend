@@ -1,6 +1,5 @@
 <template>
     <div>
-      <Bread locational1="团队信息" locational2="团队简介"/>
       <div class="tab-wrapper">
         <el-tabs v-model="introTab" @tab-click="handleClick">
           <el-tab-pane label="所有资源" name="first">用户管理</el-tab-pane>

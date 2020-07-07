@@ -1,6 +1,5 @@
 <template>
     <div class="email">
-      <Bread locational1="网站消息" />
       <div class="email-content">
         <el-table
           ref="multipleTable"

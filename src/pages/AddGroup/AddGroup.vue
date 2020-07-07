@@ -1,6 +1,5 @@
 <template>
     <div>
-      <Bread locational1="团队组别" :locational2="id?'修改内容':'上传组别'" path1="/categroup"/>
       <div class="loading" v-loading="loading" v-if="loading"></div>
       <div class="upload-box" >
         <el-form  :model="ruleForm" :rules="rules" ref="ruleForm" label-width="110px" class="demo-ruleForm" @submit.native.prevent>
@@ -60,11 +59,10 @@
 
 
 <script>
-  import Bread from '../../components/Bread/Bread'
   import EditorTool from '../../components/EditorTool/EditorTool'
   import {uploadTeam,reqGroupAllno,reqUpdate,uploadGroupDirect,reqGroupDirect,deleteGroupDirect,updateDirectName} from "../../api";
   export default {
-    components:{Bread,EditorTool},
+    components:{EditorTool},
     data() {
       return {
         formData:new FormData(),

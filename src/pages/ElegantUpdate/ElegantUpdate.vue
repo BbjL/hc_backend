@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Bread locational1="所有风采" path1="elegants" locational2="修改内容"/>
     <div class="upload-element" v-loading="loading">
       <el-form :model="ruleForm"  ref="ruleForm" label-width="100px" enctype="multipart/form-data">
         <el-form-item label="比赛名称" prop="articleName">
