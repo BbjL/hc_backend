@@ -11,7 +11,7 @@
       <form @submit.prevent>
         <input required v-model="account" autofocus type="account" name="account" placeholder="账号">
         <input required v-model="pwd" type="password" name="pass" placeholder="密码">
-        <button class="submit-btn" type="submit" @click="login" @keyup.enter.native="login">登陆</button>
+        <button class="submit-btn" type="submit" @click="login" @keyup.enter="login">登陆</button>
         <div id="remember-container">
           <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
           <span id="remember">记住密码</span>
@@ -22,19 +22,18 @@
 </template>
 
 <script>
-  import {reqLogin} from "../../api";
-  import {TweenMax} from 'gsap'
-    export default {
+import {TweenMax} from 'gsap'
+  export default {
         name: "Login",
         data(){
           return {
             account:'',
-            pwd:''
+            pwd:'',
+            redirect:''
           }
         },
         mounted() {
           this.init()
-          this.getLoginCookies();
         },
         methods:{
           /**
@@ -56,41 +55,36 @@
                 $("#login-button").fadeIn(800);
               });
             });
-
-
           },
 
           /**
            * 登陆
            * */
-          async login(){
+          login(){
             const _account = this.account;
             const _pwd = this.pwd;
+
             if(_account&&_pwd != ''){
-
-              const result = await reqLogin(_account,_pwd)
-
-              if(result.status == 200){
-                this.$router.push({
-                  path: '/home',
-                  name: 'home'
+              this.$store.dispatch('loginIn' , {username:_account ,password: _pwd})
+                .then( () => {
+                  this.$router.push({path: this.redirect || '/' })
                 })
-              }else{
-                this.$message({type:'warning' , message:'账号或密码错误！'})
-              }
-
-
             }
+
           },
 
-          /**
-           * 获取登陆cookie
-           * */
-          getLoginCookies(){
-            const cookies = document.cookie;
-            console.log(cookies)
-          }
+        },
+        watch:{
+          $route:{
+            handler:function(route){
+              const query = route.query
+              if(query){
+                this.redirect = query.redirect;
+              }
 
+            },
+            immediate:true
+          },
         }
     }
 </script>

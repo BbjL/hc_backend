@@ -82,8 +82,6 @@ export const reqAllProjects = (delFlag, pageNum ,pageSize ) => ajax(BASE_URL+'/p
 export const reqAllEmails = (pageNum =1 ,pageSize =10) => ajax(BASE_URL+'/email/find/all' , {pageNum ,pageSize} , 'post' )
 // 31.  删除留言
 export const deleteEmails = (ids ,delFlag =1 ) => ajax(BASE_URL+'/email/update/del' , {ids ,delFlag } , 'post' )
-// 32.  登陆接口
-export const reqLogin = (username ,password ) => ajax(BASE_URL+'/login' , {username ,password } , 'post' )
 // 33.  团队项目状态修改
 export const updateProjectStatus = (formdata ) => ajax(BASE_URL+'/pro/update' , formdata, 'post' , 'formdata')
 

@@ -5,7 +5,7 @@ const state = {
 }
 
 const actions = {
-  sliderRoutes({commit}){
+  sliderRoutes({commit} ){
     commit('SETROUTES' ,{routes:router.options.routes})
   }
 }

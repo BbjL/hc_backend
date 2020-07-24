@@ -61,7 +61,6 @@
 
 <script>
   import axios from 'axios'
-  import E from 'wangeditor'
   import {reqGroups} from '../../api/index'
   import EditorTool from '../../components/EditorTool/EditorTool'
   export default {
@@ -107,20 +106,15 @@
       }
     },
     async mounted(){
-      // this.editor = new E('editor')
-      // this.editor.onchange = function () {
-      //   this.videoDetail = this.$txt.html()
-      // }
-      // this.editor.create()
       var result = await reqGroups()
       this.groups = result.obj
       this.videoGroup = this.groups[0]
     },
     methods: {
       //编辑器通信
-      editing(html,empty){ // html为接收的内容 empty判断内容是否为空
+      editing(html,isEmpty){ // html为接收的内容 empty判断内容是否为空
         this.ruleForm.content = html;
-        if(empty ===1){     // 如果编辑器内容为空
+        if(isEmpty === true){     // 如果编辑器内容为空
           this.ruleForm.content = ''  // 将发送内容置为空
         }
         this.isClear = false;

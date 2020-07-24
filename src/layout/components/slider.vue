@@ -7,11 +7,11 @@
            unique-opened
            :router="true"
            :collapse="isCollapse">
-    <router-link to="/home"> <h3 class="tit" v-show="!isCollapse">海创团队</h3></router-link>
-    <router-link to="/home"> <h3 class="tit" v-show="isCollapse">HC</h3></router-link>
+    <h3 class="tit" v-if="!isCollapse">海创团队</h3>
+    <h3 class="tit" v-else>HC</h3>
     <p class="tit-divi">Main</p>
 
-    <sliderMeau v-for="(route,index) in routes" :key="route.path" :route="route" :index="index.toString()"/>
+    <sliderMeau :routes="routes" />
 
   </el-menu>
 </template>
@@ -30,10 +30,10 @@ export default {
     mounted(){
       this.$store.dispatch('sliderRoutes');
       this.routes = this.$store.state.sliderRoutes.routes
+    },
+    methods:{
+
     }
 }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
-
-</style>

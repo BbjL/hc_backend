@@ -20,7 +20,7 @@
                   <i class="el-icon-arrow-down el-icon-setting"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item><router-link to="/login">退出登录</router-link></el-dropdown-item>
+                  <el-dropdown-item @click.native="logOut">退出登录</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
 
@@ -35,9 +35,6 @@
             </transition>
           </el-main>
 
-          <el-footer style="height: 30px;text-align: center;background-color: #eee;font-size:12px;color:#222;line-height: 30px;">
-            copyright ©2018-©2019 海创团队 All Rights Reserved
-          </el-footer>
         </el-container>
 
     </el-container>
@@ -46,6 +43,7 @@
 <script>
 import slider from './components/slider'
 import Bread from '@/components/Bread/Bread'
+import auth from '@/utils/auth'
 export default {
   components:{slider,Bread},
   data() {
@@ -83,10 +81,17 @@ export default {
       }
 
       return name.trim().toLocaleLowerCase() === '主页'.toLocaleLowerCase()
+    },
+
+    /**
+     * 退出登陆
+     * */
+    logOut(){
+      auth.removeAdminInfo('username');
+      this.$router.push({path:'/login' , query:{redirect:this.$route.fullPath}})
     }
 
   },
-
 
 }
 </script>
@@ -150,7 +155,6 @@ padding: 5px 10px;
       margin-top: 10px;
       margin-bottom: 10px;
   .content-right
-    background rgb(245, 247, 249)
     .content-header
       position relative
       display flex

@@ -4,5 +4,6 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_HOST: '"/api"' // 配置代理路径的符号，增加的内容
+  // API_HOST: '"/api"' ,  // 配置代理路径的符号，增加的内容
+  API_ROOT: '"/api"' ,  // 配置代理路径的符号，增加的内容
 })

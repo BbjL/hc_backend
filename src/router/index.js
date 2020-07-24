@@ -7,20 +7,20 @@ Vue.use(Router);
 const router  = [
   {
     path: '/',
-    redirect: '/login',//设置默认指向的路径
+    redirect: '/home',//设置默认指向的路径
     meta:{noShow:true}
   },
   {
     path: '/login',
     name: 'login',
     component: () => import('../pages/Login/Login'),
-    meta:{noShow:true}
+    meta:{noShow:true , notReqLogin:true}
   },
   {
     path: '/404',
     name: 'error',
     component: () => import('../pages/404/index'),
-    meta:{noShow:true}
+    meta:{noShow:true ,notReqLogin:true}
   },
   // home
   {
@@ -34,7 +34,7 @@ const router  = [
         path:'/home/all',
         component:() => import('../pages/Home/Home'),
         meta:{}
-      }
+      },
     ]
   },
   // 团队信息
@@ -47,12 +47,13 @@ const router  = [
       {
         path:'/message/resource',
         component:() => import( '../pages/Resource/Resource'),
-        meta:{title :'实验室资源 '}
+        meta:{title :'实验室资源 '},
+
       },
       {
         path:'/message/regulation',
         component:() =>import('../pages/Regulation/Regulation'),
-        meta:{title :'管理制度 '}
+        meta:{title :'管理制度 '},
       }
     ]
   },
@@ -114,7 +115,7 @@ const router  = [
     component: Layout,
     children:[
       {
-        path:'/teamsurroundingl/detail',
+        path:'/teamsurrounding/detail',
         component:() => import('../pages/TeamSurrounding/TeamSurrounding' ),
         meta:{title :'团队氛围 '}
       }
@@ -240,6 +241,5 @@ const router  = [
 export default new Router({
   routes:router
 })
-
 
 

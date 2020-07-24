@@ -1,11 +1,13 @@
 <template>
-  <el-menu-item :index="childRoutes.path" >{{childRoutes.meta.title}}</el-menu-item>
+  <fragment>
+    <el-menu-item v-for="route in routes" :index="route.path" :key="route.path">{{route.meta.title}}</el-menu-item>
+  </fragment>
 </template>
 
 <script>
 export default {
     name: "meauItem",
-    props:['childRoutes']
+    props:['routes']
 }
 </script>
 

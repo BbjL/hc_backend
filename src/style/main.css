@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'TencentSansw3';
+  src: url('./fonts/TencentSans-W3.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TencentSansw7';
+  src: url('./fonts/TencentSans-W7.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body{
+  font-size: 100%;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  background:#ffffff;
+  margin: 0;
+}
+p,ul li,ol li{
+  margin:0;
+  font-size:1em;
+  letter-spacing:0;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  margin-bottom:20px
+}
+ul,label{
+  margin:0;
+  padding:0;
+}
+body a:hover{
+  text-decoration:none;
+}
+input[type="submit"],input[type="reset"],a,.w3ls_team_grid1_pos ul li{
+  -webkit-transition: 0.5s ease-in;
+  -moz-transition: 0.5s ease-in;
+  -ms-transition: 0.5s ease-in;
+  -o-transition: 0.5s ease-in;
+  transition:0.5s ease-in;
+}
+button.submit{
+  background-color: #f8b239;
+  border: inherit;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 12px;
+  text-transform: capitalize; /*将首字母转化为大写*/
+  transition: all 0.3s ease 0s;
+  position: relative;
+  outline:none !important;
+}
+button.submit::after{
+  background: rgba(0, 0, 0, 0.09) none repeat scroll 0 0;
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  z-index: 1;
+  transition: all 0.3s ease-out 0s;
+}
+button.submit:hover::after {
+  width: 100%;
+}
+
+
+/*清楚浮动*/
+.clearfix{
+  *zoom: 1;
+}
+.clearfix:after{
+  display: block;
+  content: '';
+  clear: both;
+}
+
+/*当行显示省略号*/
+.ellipsis{
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.mutiline_ellipsis{
+  position: relative;
+  line-height: 1.2em;
+  height: 3.6em;
+  overflow: hidden;
+}
+.mutiline_ellipsis::after{
+  content: '...';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #333;
+  background: #fff;
+}
+
+.req_error{
+  width: 90%;
+  margin: 0 auto;
+  line-height: 60px;
+  color: #909399;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 50px;
+  border-top: 2px solid #eee;
+  border-bottom: 2px solid #eee;
+}

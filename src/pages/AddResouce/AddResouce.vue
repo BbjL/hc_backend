@@ -100,19 +100,6 @@
                     }else{
                       this.$message({type: 'error', message: result.msg});
                     }
-                    // try{
-                    //   const result = await uploadReso(this.formData);
-                    //   if(result.status === 200){
-                    //     this.$message({type: 'success', message: result.msg});
-                    //     //清空内容
-                    //     this.reset()
-                    //   }else{
-                    //     this.$message({type: 'error', message: result.msg});
-                    //   }
-                    // }catch(e){
-                    //   this.$message({type: 'error', message: '上传失败！'});
-                    //   console.log(e+'请求错误！');
-                    // }
                     this.formData = new FormData();
                   })();
                 }).catch()
