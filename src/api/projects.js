@@ -1,37 +1,60 @@
 import ajax from '@/utils/ajax'
 
-//添加
-export function add(data = {}){
+//获取全部项目
+export function reqAllPros(){
   return ajax({
-    url:'/path',
-    data,
+    url:'/pro/all',
     type:'type',
   })
 }
 
-//删除
-export function remove(data = {}){
+//根据id获取
+export function reqProByID(id){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/pro/find/id',
+    data:{id},
+    type:'post',
   })
 }
 
-//获取奖项
-export function get(data = {}){
+//根据可用性分页获取
+export function reqProByPage({delFlag = 0, pageNum = 1, pageSize = 999}){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/pro/find/status',
+    data:{
+      delFlag,
+      pageNum,
+      pageSize
+    },
+    type:'post',
   })
 }
 
-//更新
-export function update(data = {}){
+// 分组获取项目
+export function reqProByGroup(group){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/pro/group',
+    data:{group},
+    type:'post',
+  })
+}
+
+// 项目上传
+export function uploadPros(formData){
+  return ajax({
+    url:'/pro/upload',
+    data:formData,
+    type:'post',
+    headers:'formdata'
+  })
+}
+
+// 项目修改
+export function updatePros(formData){
+  return ajax({
+    url:'/pro/update',
+    data:formData,
+    type:'post',
+    headers:'formdata'
   })
 }

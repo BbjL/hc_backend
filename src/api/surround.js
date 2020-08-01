@@ -1,37 +1,55 @@
 import ajax from '@/utils/ajax'
 
-//添加
-export function add(data = {}){
+//获取所有氛围
+export function reqAllSurround({delFlag = 0, pageNum = 1, pageSize = 999 }){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/atm/find/all',
+    data:{
+      delFlag,
+      pageNum,
+      pageSize
+    },
+    type:'post',
   })
 }
 
-//删除
-export function remove(data = {}){
+// 根据ID获取团队氛围
+export function reqSurroundByID(id){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/atm/find/one',
+    data:{id},
+    type:'post',
   })
 }
 
-//获取奖项
-export function get(data = {}){
+//修改团队氛围
+export function updateSurround(formData){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/atm/update/all',
+    data:formData,
+    type:'post',
+    headers:'formdata'
   })
 }
 
-//更新
-export function update(data = {}){
+//上传团队氛围
+export function uploadSurround(formData){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/atm/upload',
+    data:formData,
+    type:'post',
+    headers:'formdata'
+  })
+}
+
+// 是否删除氛围
+export function changeSurroundStatus({id, delFlag = 1}){
+  return ajax({
+    url:'/atm/update/del',
+    data:{
+      id,
+      delFlag
+    },
+    type:'post',
   })
 }

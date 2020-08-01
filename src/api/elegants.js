@@ -1,37 +1,78 @@
 import ajax from '@/utils/ajax'
 
+//根据年份获取
+export function reqEleByYear({year, delFlag = 0, pageNum = 1, pageSize = 999 }){
+  return ajax({
+    url:'/elegant/age',
+    data:{
+      year,
+      delFlag,
+      pageNum,
+      pageSize
+    },
+    type:'post',
+  })
+}
+
+//根据分组获取
+export function reqEleByGroup({articleGroup, delFlag = 0, pageNum = 1, pageSize = 999 }){
+  return ajax({
+    url:'/elegant/group',
+    data:{
+      articleGroup,
+      delFlag,
+      pageNum,
+      pageSize
+    },
+    type:'post',
+  })
+}
+
+//根据id获取
+export function reqEleByID(id){
+  return ajax({
+    url:'/elegant/details',
+    data:{id},
+    type:'post',
+  })
+}
+
 //添加
-export function add(data = {}){
+export function uploadEle(formData){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/elegant/upload',
+    data:formData,
+    type:'post',
+    headers:'formdata'
   })
 }
 
-//删除
-export function remove(data = {}){
+//修改
+export function updateEle(formData){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/elegant/update',
+    data:formData,
+    type:'post',
+    headers:'formdata'
   })
 }
 
-//获取奖项
-export function get(data = {}){
+//修改状态
+export function changeEleStatus({id, delFlag = 1 }){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/elegant/update/delFlag',
+    data:{
+      id,
+      delFlag
+    },
+    type:'post',
   })
 }
 
-//更新
-export function update(data = {}){
+//获取所有年份
+export function reqAllYears(){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/elegant/ages',
+    type:'post',
   })
 }

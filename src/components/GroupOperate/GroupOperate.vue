@@ -158,10 +158,6 @@
     left:50%;
     transform:translateX(-50%);
   }
-
-  .el-input__inner{
-    width: auto;
-  }
   .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;

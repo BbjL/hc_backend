@@ -12,7 +12,6 @@
               <el-radio-button :label="false" v-show="isCollapse"><i class="el-icon-s-unfold"></i></el-radio-button>
             </el-radio-group>
 
-
             <Bread class="bread-crumb" :crumbs="getBreadCrumbs()"/>
 
             <el-dropdown trigger="click" class="header-right">
@@ -30,7 +29,8 @@
             <transition
               name="fade"
               type="transition"
-              :appear="true">
+              mode="out-in"
+              appear>
               <router-view/>
             </transition>
           </el-main>
@@ -138,22 +138,7 @@ padding: 5px 10px;
 </style>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .el-menu-vertical-demo
-    .tit
-      font-family: TencentSansw3;
-      margin-top 20px
-      font-size 24px
-      color: #ffffff
-      text-align center
-    .tit-divi
-      font-weight: 700;
-      color: #adb5bd;
-      font-size: .9rem;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      margin-left: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;
+
   .content-right
     .content-header
       position relative

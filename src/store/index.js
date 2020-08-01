@@ -10,7 +10,14 @@ import cancelRequest from './modules/cancelRequest' //跳转页面前取消请�
 import user from './modules/user'
 import resource from './modules/resource'
 import regulations from './modules/regulations'
-
+import videos from './modules/videos'
+import groups from './modules/groups'
+import elegants from './modules/elegants'
+import surround from './modules/surround'
+import projects from './modules/projects'
+import members from './modules/members'
+import awards from './modules/awards'
+import emails from './modules/emails'
 
 
 Vue.use(Vuex);
@@ -21,7 +28,15 @@ export default new Vuex.Store({
     cancelRequest,
     user,
     resource,
-    regulations
+    regulations,
+    videos,
+    groups,
+    elegants,
+    surround,
+    projects,
+    members,
+    awards,
+    emails
   },
   actions,
   getters,

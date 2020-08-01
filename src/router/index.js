@@ -13,7 +13,7 @@ const router  = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('../pages/Login/Login'),
+    component: () => import('../pages/login/index'),
     meta:{noShow:true , notReqLogin:true}
   },
   {
@@ -32,7 +32,7 @@ const router  = [
     children:[
       {
         path:'/home/all',
-        component:() => import('../pages/Home/Home'),
+        component:() => import('../pages/home/Home'),
         meta:{}
       },
     ]
@@ -42,17 +42,17 @@ const router  = [
     path: '/message',
     name: 'message',
     component: Layout,
-    meta:{ title:"团队信息", icon: 'el-icon-s-home' ,affix:true  },
+    meta:{ title:"团队信息", icon: 'el-icon-s-management' ,affix:true  },
     children:[
       {
         path:'/message/resource',
-        component:() => import( '../pages/Resource/Resource'),
+        component:() => import( '../pages/resource/Resource'),
         meta:{title :'实验室资源 '},
 
       },
       {
         path:'/message/regulation',
-        component:() =>import('../pages/Regulation/Regulation'),
+        component:() =>import('../pages/regulation/Regulation'),
         meta:{title :'管理制度 '},
       }
     ]
@@ -62,23 +62,24 @@ const router  = [
     path: '/video',
     name: 'video',
     component: Layout,
-    meta:{ title:"团队视频", icon: 'el-icon-video-camera-solid' ,affix:true  },
+    redirect:'/video/all',
+    meta:{ title:"科研视频", icon: 'el-icon-video-camera-solid' ,affix:true  },
     children:[
       {
         path:'/video/all',
-        component:() => import( '../pages/VideoUpdate/VideoUpdate' ),
-        meta:{title :'所有视频 '}
+        component:() => import( '../pages/videos/index' ),
+        meta:{title :'视频列表 '}
       },
       {
-        path:'/video/update',
-        component:() => import( '../pages/VideoUpdate/VideoUpdate' ),
-        meta:{title :'视频更新 ' , noShow:true}
+        path:'/video/edit',
+        component:() => import( '../pages/videos/edit/index' ),
+        meta:{title :'视频上传 ' , noShow:true}
       },
       {
-        path:'/video/videoupload',
-        component:() => import('../pages/VideoUpload/VideoUpload'  ),
-        meta:{title :'视频上传 '}
-      }
+        path:'/video/detail',
+        component:() => import( '../pages/videos/detail/index' ),
+        meta:{title :'详细内容', noShow:true }
+      },
     ]
   },
   // 团队风采
@@ -86,38 +87,37 @@ const router  = [
     path: '/teamele',
     name: 'teamele',
     component: Layout,
-    redirect:'/teamele',
+    redirect:'/teamele/all',
     meta:{ title:"团队风采", icon: 'el-icon-picture' ,affix:true  },
     children:[
       {
         path:'/teamele/all',
-        component:() => import( '../pages/Elegants/Elegants.vue'),
-        meta:{title :'所有风采 '}
+        component:() => import( '../pages/elegant/index.vue'),
+        meta:{title :'所有列表 '}
       },
       {
-        path:'/teamele/update',
-        component:() => import( '../pages/ElegantUpdate/ElegantUpdate' ),
-        meta:{title :'风采更新 ',noShow:true}
+        path:'/teamele/edit',
+        component:() => import( '../pages/elegant/edit' ),
+        meta:{title :'上传风采 ',noShow:true}
       },
-      {
-        path:'/teamele/upload',
-        component:() => import('../pages/ElegantUpload/ElegantUpload' ),
-        meta:{title :'风采上传 '}
-      }
     ]
   },
   // 团队氛围
   {
-    path: '/teamsurrounding',
-    name: 'teamsurrounding',
-    redirect:'/teamsurrounding/detail',
+    path: '/surround',
+    name: 'surround',
+    redirect:'/surround/all',
     meta:{title:'团队氛围', icon: 'el-icon-s-promotion' ,affix:true  },
     component: Layout,
     children:[
       {
-        path:'/teamsurrounding/detail',
-        component:() => import('../pages/TeamSurrounding/TeamSurrounding' ),
-        meta:{title :'团队氛围 '}
+        path:'/surround/all',
+        component:() => import('../pages/surround/index' ),
+      },
+      {
+        path:'/surround/edit',
+        component:() => import('../pages/surround/edit/index' ),
+        meta:{title:'编辑氛围' , noShow:true}
       }
     ]
   },
@@ -131,33 +131,33 @@ const router  = [
     children:[
       {
         path:'/projects/all',
-        component:() => import('../pages/TeamProjects/TeamProjects' ),
-        meta:{title :'所有项目 '}
+        component:() => import('../pages/projects/index' ),
+        meta:{title :'项目列表 '}
       },
       {
-        path:'/projects/upload',
-        component:() => import('../pages/UploadProjects/UploadProjects' ),
-        meta:{title :'项目上传 '}
+        path:'/projects/edit',
+        component:() => import('../pages/projects/edit/index' ),
+        meta:{title :'编辑项目 ' , noShow:true  }
       }
     ]
   },
   //团队成员
   {
-    path: '/teammembers',
-    name: 'teammembers',
-    redirect:'/teammembers/all',
+    path: '/members',
+    name: 'members',
+    redirect:'/members/all',
     meta:{title:'团队成员', icon: 'el-icon-user-solid' ,affix:true  },
     component: Layout,
     children:[
       {
-        path:'/teammembers/all',
-        component:() => import('../pages/TeamMembers/TeamMembers'  ),
-        meta:{title :'成员信息 '}
+        path:'/members/all',
+        component:() => import('../pages/members/index'  ),
+        meta:{title :'成员列表 '}
       },
       { //添加或者更新成员
-        path:'/teammembers/upload',
-        component:() => import('../pages/UploadAndDateMems/UploadAndDateMems'),
-        meta:{title :'成员上传 '}
+        path:'/members/edit',
+        component:() => import('../pages/members/edit'),
+        meta:{title :'编辑成员 ', noShow:true}
       }
     ]
   },
@@ -171,33 +171,33 @@ const router  = [
     children:[
       {
         path:'/groups/all',
-        component:() => import('../pages/TeamGroups/TeamGroups' ),
-        meta:{title :'所有组别 '}
+        component:() => import('../pages/groups' ),
+        meta:{title :'组别列表 '}
       },
-      { //添加或者更新成员
-        path:'/groups/upload',
-        component:() => import('../pages/AddGroup/AddGroup'),
-        meta:{title :'组别上传 ', noShow:true}
+      {
+        path:'/groups/edit',
+        component:() => import('../pages/groups/edit' ),
+        meta:{title :'编辑组别 ', noShow:true}
       }
     ]
   },
   //团队奖项
   {
-    path: '/honor',
-    name: 'honor',
-    redirect:'/honor/all',
+    path: '/awards',
+    name: 'awards',
+    redirect:'/awards/all',
     meta:{title:'团队奖项', icon: 'el-icon-s-order' ,affix:true  },
     component: Layout,
     children:[
       {
-        path:'/honor/all',
-        component:() => import('../pages/TeamHonor/TeamHonor'  ),
-        meta:{title :'所有奖项 '}
+        path:'/awards/all',
+        component:() => import('../pages/awards' ),
+        meta:{title :'奖项列表 '}
       },
       { //添加或者更新成员
-        path:'/honor/upload',
-        component:() => import('../pages/UploadHonor/UploadHonor'),
-        meta:{title :'奖项上传 '}
+        path:'/awards/edit',
+        component:() => import('../pages/awards/edit'),
+        meta:{title :'编辑奖项 ', noShow:true}
       }
     ]
   },
@@ -211,26 +211,25 @@ const router  = [
     children:[
       {
         path:'/email/all',
-        component:() => import('../pages/Email/Email' ),
-        meta:{}
+        component:() => import('../pages/emails' ),
       }
     ]
   },
   //回收站
-  {
-    path: '/garbage',
-    name: 'garbage',
-    redirect:'/garbage/all',
-    meta:{title:'回收站', icon: 'el-icon-delete-solid' ,affix:true  },
-    component: Layout,
-    children:[
-      {
-        path:'/garbage/all',
-        component:() => import('../pages/Garbage/Garbage'),
-        meta:{}
-      }
-    ]
-  },
+  // {
+  //   path: '/garbage',
+  //   name: 'garbage',
+  //   redirect:'/garbage/all',
+  //   meta:{title:'回收站', icon: 'el-icon-delete-solid' ,affix:true  },
+  //   component: Layout,
+  //   children:[
+  //     {
+  //       path:'/garbage/all',
+  //       component:() => import('../pages/Garbage/Garbage'),
+  //       meta:{}
+  //     }
+  //   ]
+  // },
   {
     path:'*',
     redirect:'/404',

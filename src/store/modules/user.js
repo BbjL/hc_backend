@@ -19,6 +19,19 @@ const actions = {
           reject(error)
         })
     })
+  },
+
+  //获取sessionid
+  getSessionID({commit}){
+    return new Promise((resolve, reject) => {
+      getSessionID()
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
   }
 }
 

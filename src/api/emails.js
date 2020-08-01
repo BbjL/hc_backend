@@ -1,20 +1,26 @@
 import ajax from '@/utils/ajax'
 
-//添加
-export function add(data = {}){
+//获取邮件
+export function reqEmail(pageNum = 1, pageSize = 10){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/email/find/all',
+    data:{
+      pageNum,
+      pageSize
+    },
+    type:'post',
   })
 }
 
 //删除
-export function remove(data = {}){
+export function deleteEmail(ids ,delFlag =1 ){
   return ajax({
-    url:'/path',
-    data,
-    type:'type',
+    url:'/email/update/del',
+    data:{
+      ids,
+      delFlag
+    },
+    type:'post',
   })
 }
 

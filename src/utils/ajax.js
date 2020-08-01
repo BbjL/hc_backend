@@ -59,10 +59,11 @@ const CancelToken = axios.CancelToken;
  * /防止重复请求
  * */
 let removePending = (config) => {
-  for (let k in store.state['axiosPromiseCancel']) {
-    if (store.state['axiosPromiseCancel'][k].url === config.url + '&' + config.method) { //当前请求在数组中存在时执行函数体
-      store.state['axiosPromiseCancel'][k].cancel(); //执行取消操作
-      store.state['axiosPromiseCancel'].splice(k, 1); //把这条记录从数组中移除
+  for (let k in store.state.cancelRequest['axiosPromiseCancel']) {
+    if (store.state.cancelRequest['axiosPromiseCancel'][k].url === config.url + '&' + config.method) { //当前请求在数组中存在时执行函数体
+      // console.log(store.state.cancelRequest['axiosPromiseCancel'][k].url)
+      store.state.cancelRequest['axiosPromiseCancel'][k].cancel(); //执行取消操作
+      store.state.cancelRequest['axiosPromiseCancel'].splice(k, 1); //把这条记录从数组中移除
     }
   }
 };

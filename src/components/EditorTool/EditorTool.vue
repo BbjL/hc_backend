@@ -10,7 +10,7 @@
     z-index: 100 !important;
   }
   .w-e-text-container{
-    height:600px!important;
+    height:400px;
     z-index:2 !important;
   }
   .w-e-text{

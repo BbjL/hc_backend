@@ -91,10 +91,7 @@ axios.interceptors.request.use(config=>{
  * 响应拦截
  * */
 axios.interceptors.response.use( res => {
-  console.log()
   return res
 }, error => {
-  console.log('服务器请求错误!')
-  console.log(this)
   return Promise.reject(error)
 })
